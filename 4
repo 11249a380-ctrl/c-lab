@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+class Number {
+private:
+    int value;
+
+public:
+    // Constructor
+    Number(int v = 0) {
+        value = v;
+    }
+
+    // Display function
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+
+    // Function that takes an object as argument
+    void add(Number obj) {
+        value += obj.value;
+    }
+
+    // Function that returns an object
+    Number multiply(Number obj) {
+        Number temp;                  // create a temporary object
+        temp.value = value * obj.value;  // assign result
+        return temp;                  // return object
+    }
+};
+
+int main() {
+    Number n1(10);
+    Number n2(5);
+
+    cout << "Passing object as argument:" << endl;
+    n1.add(n2);      // Passing object n2 to n1's add()
+    n1.display();    // 10 + 5 = 15
+
+    cout << "\nReturning object from function:" << endl;
+    Number result = n1.multiply(n2);  // returns an object
+    result.display();                 // 15 * 5 = 75
+
+    return 0;
+}
