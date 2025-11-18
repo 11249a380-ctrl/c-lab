@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class OverloadDemo {
+public:
+    // Overloaded functions
+
+    // 1. No parameters
+    void show() {
+        cout << "Show() with no parameters" << endl;
+    }
+
+    // 2. One integer parameter
+    void show(int x) {
+        cout << "Show(int) called with value: " << x << endl;
+    }
+
+    // 3. Two parameters
+    void show(int x, double y) {
+        cout << "Show(int, double) called with values: " << x << " and " << y << endl;
+    }
+
+    // 4. Different parameter type
+    void show(string s) {
+        cout << "Show(string) called with value: " << s << endl;
+    }
+};
+
+int main() {
+    OverloadDemo obj;
+
+    obj.show();              // calls show()
+    obj.show(10);            // calls show(int)
+    obj.show(10, 3.14);      // calls show(int, double)
+    obj.show("Hello");       // calls show(string)
+
+    return 0;
+}
