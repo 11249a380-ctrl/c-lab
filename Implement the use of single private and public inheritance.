@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Base {
+private:
+    int privateVar;
+
+protected:
+    int protectedVar;
+
+public:
+    int publicVar;
+
+    Base() {
+        privateVar = 10;
+        protectedVar = 20;
+        publicVar = 30;
+    }
+
+    void showBase() {
+        cout << "Base Class - privateVar = " << privateVar << endl;
+        cout << "Base Class - protectedVar = " << protectedVar << endl;
+        cout << "Base Class - publicVar = " << publicVar << endl;
+    }
+};
+
+// Derived class using PUBLIC inheritance
+class PublicDerived : public Base {
+public:
+    void showPublicDerived() {
+        // privateVar is NOT accessible
+        // cout << privateVar;  // Error
+
+        cout << "PublicDerived - protectedVar = " << protectedVar << endl; // Accessible
+        cout << "PublicDerived - publicVar = " << publicVar << endl;       // Accessible
+    }
+};
+
+// Derived class using PRIVATE inheritance
+class PrivateDerived : private Base {
+public:
+    void showPrivateDerived() {
+        // privateVar is NOT accessible
+        // cout << privateVar;  // Error
+
+        cout << "PrivateDerived - protectedVar = " << protectedVar << endl; // Accessible
+        cout << "PrivateDerived - publicVar = " << publicVar << endl;       // Accessible
+    }
+
+    // Base class public members become private in PrivateDerived
+    void showBaseFromPrivate() {
+        showBase();  // Can call Base class public member inside derived class
+    }
+};
+
+int main() {
+    cout << "--- Public Inheritance ---" << endl;
+    PublicDerived pubObj;
+    pubObj.showPublicDerived();
+
+    cout << "\n--- Private Inheritance ---" << endl;
+    PrivateDerived privObj;
+    privObj.showPrivateDerived();
+
+    cout << "\nAccessing Base class function from PrivateDerived inside class: ";
+    privObj.showBaseFromPrivate();
+
+    // Direct access from main
+    cout << "\nDirect access from main:" << endl;
+    cout << "pubObj.publicVar = " << pubObj.publicVar << endl;   // Accessible
+    // cout << "privObj.publicVar = " << privObj.publicVar;     // Error: private in PrivateDerived
+
+    return 0;
+}
