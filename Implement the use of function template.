@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+// Function template
+template <class T>
+T findMax(T a, T b) {
+    return (a > b) ? a : b;
+}
+
+int main() {
+    int x = 10, y = 20;
+    float p = 7.5, q = 12.3;
+    char c1 = 'A', c2 = 'Z';
+
+    // Using template with int
+    cout << "Max of " << x << " and " << y << " = " << findMax(x, y) << endl;
+
+    // Using template with float
+    cout << "Max of " << p << " and " << q << " = " << findMax(p, q) << endl;
+
+    // Using template with char
+    cout << "Max of " << c1 << " and " << c2 << " = " << findMax(c1, c2) << endl;
+
+    return 0;
+}
