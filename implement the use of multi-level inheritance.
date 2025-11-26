@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Base {
+public:
+    void showBase() {
+        cout << "This is the Base class" << endl;
+    }
+};
+
+// Derived class (inherits from Base)
+class Derived1 : public Base {
+public:
+    void showDerived1() {
+        cout << "This is the Derived1 class" << endl;
+    }
+};
+
+// Another Derived class (inherits from Derived1)
+class Derived2 : public Derived1 {
+public:
+    void showDerived2() {
+        cout << "This is the Derived2 class" << endl;
+    }
+};
+
+int main() {
+    Derived2 obj;
+
+    obj.showBase();       // From Base class
+    obj.showDerived1();   // From Derived1 class
+    obj.showDerived2();   // From Derived2 class
+
+    return 0;
+}
