@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class A {
+private:
+    int x;
+
+public:
+    A() {
+        x = 50;
+    }
+
+    // Friend function declaration
+    friend void showValue(A);
+
+    // Friend class declaration
+    friend class B;
+};
+
+// Friend function definition
+void showValue(A obj) {
+    cout << "Friend Function: x = " << obj.x << endl;
+}
+
+class B {
+public:
+    void display(A obj) {
+        cout << "Friend Class: x = " << obj.x << endl;
+    }
+};
+
+int main() {
+    A objA;
+    B objB;
+
+    // Calling friend function
+    showValue(objA);
+
+    // Calling friend class member function
+    objB.display(objA);
+
+    return 0;
+}
