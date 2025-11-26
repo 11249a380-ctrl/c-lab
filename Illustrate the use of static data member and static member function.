@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+private:
+    int id;                     // Normal data member
+
+public:
+    static int count;           // Static data member
+
+    // Constructor
+    Demo(int x) {
+        id = x;
+        count++;                // Increase static count for each object
+    }
+
+    // Static member function
+    static void showCount() {
+        cout << "Total Objects Created = " << count << endl;
+    }
+
+    void showId() {
+        cout << "Object ID = " << id << endl;
+    }
+};
+
+// Definition of static data member
+int Demo::count = 0;
+
+int main() {
+    Demo obj1(101);
+    Demo obj2(102);
+    Demo obj3(103);
+
+    obj1.showId();
+    obj2.showId();
+    obj3.showId();
+
+    // Call static function using class name
+    Demo::showCount();
+
+    return 0;
+}
