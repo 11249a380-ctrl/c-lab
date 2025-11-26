@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+private:
+    int value;
+
+public:
+    // Inline function to set value
+    inline void setValue(int value) {
+        // 'this' pointer used to distinguish between member and parameter
+        this->value = value;
+    }
+
+    // Inline function to display value
+    inline void showValue() {
+        cout << "Value = " << value << endl;
+    }
+
+    // Inline function that returns 'this' pointer
+    inline Demo* incrementValue(int v) {
+        value += v;
+        return this;   // Return the pointer to current object
+    }
+};
+
+int main() {
+    Demo obj;
+
+    // Using this pointer with member function
+    obj.setValue(10);
+    obj.showValue();
+
+    // Chaining using 'this' pointer
+    obj.incrementValue(5)->incrementValue(15);
+    cout << "After incrementing: ";
+    obj.showValue();
+
+    return 0;
+}
