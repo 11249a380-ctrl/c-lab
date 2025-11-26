@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class MyString {
+private:
+    char str[100];
+
+public:
+    // Default constructor
+    MyString() {
+        str[0] = '\0';
+    }
+
+    // Parameterized constructor
+    MyString(const char *s) {
+        strcpy(str, s);
+    }
+
+    // Display function
+    void display() {
+        cout << str << endl;
+    }
+
+    // Overload assignment operator
+    void operator=(const MyString &obj) {
+        strcpy(str, obj.str);
+    }
+
+    // Overload comparison operator
+    bool operator==(const MyString &obj) {
+        return strcmp(str, obj.str) == 0;
+    }
+};
+
+int main() {
+    MyString s1("Hello");
+    MyString s2("World");
+    MyString s3;
+
+    cout << "Original Strings:" << endl;
+    cout << "s1: "; s1.display();
+    cout << "s2: "; s2.display();
+
+    // Assignment
+    s3 = s1;
+    cout << "\nAfter s3 = s1, s3: ";
+    s3.display();
+
+    // Comparison
+    if(s1 == s3)
+        cout << "\ns1 and s3 are equal" << endl;
+    else
+        cout << "\ns1 and s3 are not equal" << endl;
+
+    if(s1 == s2)
+        cout << "s1 and s2 are equal" << endl;
+    else
+        cout << "s1 and s2 are not equal" << endl;
+
+    return 0;
+}
