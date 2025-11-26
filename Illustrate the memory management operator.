@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+public:
+    int x;
+
+    Demo() {
+        cout << "Constructor Called" << endl;
+    }
+
+    ~Demo() {
+        cout << "Destructor Called" << endl;
+    }
+};
+
+int main() {
+    // ---------- Using new operator ----------
+    cout << "Allocating memory using new..." << endl;
+    Demo *ptr = new Demo;   // Dynamic object creation
+    ptr->x = 50;
+
+    cout << "Value of x = " << ptr->x << endl;
+
+    // ---------- Using new[] operator ----------
+    cout << "\nAllocating array of objects using new[]..." << endl;
+    Demo *arr = new Demo[3];   // Dynamic array creation
+
+    // ---------- Using delete operators ----------
+    cout << "\nReleasing memory using delete..." << endl;
+    delete ptr;           // Deletes single object
+
+    cout << "Releasing memory using delete[]..." << endl;
+    delete[] arr;         // Deletes array of objects
+
+    return 0;
+}
