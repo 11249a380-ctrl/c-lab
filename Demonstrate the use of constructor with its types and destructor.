@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+private:
+    int value;
+
+public:
+    // 1. Default Constructor
+    Demo() {
+        value = 0;
+        cout << "Default Constructor Called. value = " << value << endl;
+    }
+
+    // 2. Parameterized Constructor
+    Demo(int x) {
+        value = x;
+        cout << "Parameterized Constructor Called. value = " << value << endl;
+    }
+
+    // 3. Copy Constructor
+    Demo(const Demo &obj) {
+        value = obj.value;
+        cout << "Copy Constructor Called. value = " << value << endl;
+    }
+
+    // Destructor
+    ~Demo() {
+        cout << "Destructor Called for value = " << value << endl;
+    }
+};
+
+int main() {
+    // Object creation
+
+    Demo obj1;            // Default constructor
+    Demo obj2(10);        // Parameterized constructor
+    Demo obj3 = obj2;     // Copy constructor
+
+    return 0;
+}
