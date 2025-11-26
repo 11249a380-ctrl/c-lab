@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class Number {
+private:
+    int x;
+
+public:
+    Number(int a = 0) {
+        x = a;
+    }
+
+    // Overload unary ++ (prefix)
+    void operator++() {
+        x = x + 1;
+    }
+
+    // Overload unary - operator
+    void operator-() {
+        x = -x;
+    }
+
+    void display() {
+        cout << "Value = " << x << endl;
+    }
+};
+
+int main() {
+    Number n(10);
+
+    cout << "Original value: ";
+    n.display();
+
+    ++n;     // Calls overloaded ++ operator
+    cout << "After ++: ";
+    n.display();
+
+    -n;      // Calls overloaded unary - operator
+    cout << "After unary - : ";
+    n.display();
+
+    return 0;
+}
